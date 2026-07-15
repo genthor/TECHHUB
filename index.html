@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechAccess Hub – Assistive Tech Advocacy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            background: #f8f9fc;
+            color: #1e2b3c;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 2rem 1rem;
+        }
+
+        .top-bar {
+            background: #1e2b3c;
+            color: #f0f6fb;
+            padding: 0.5rem 0;
+            font-size: 0.85rem;
+            width: 100%;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 0 1rem;
+        }
+
+        .top-bar a {
+            color: #b5d6e8;
+            text-decoration: none;
+            margin-left: 1.2rem;
+            transition: color 0.2s;
+        }
+        .top-bar a:hover {
+            color: #ffffff;
+        }
+
+        .top-bar .left {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .top-bar .left i {
+            color: #b5d6e8;
+        }
+
+        header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0 1rem 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #2f6b8c;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        .logo-text p {
+            font-size: 0.9rem;
+            color: #4a5e73;
+            font-weight: 400;
+            margin-top: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-weight: 500;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #1e2b3c;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #2f6b8c;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 43, 60, 0.8) 0%, rgba(47, 107, 140, 0.75) 100%),
+                        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400"%3E%3Crect fill="%232f6b8c" width="600" height="400"/%3E%3Ccircle cx="100" cy="100" r="60" fill="%23b5d6e8" opacity="0.15"/%3E%3Ccircle cx="500" cy="300" r="80" fill="%23b5d6e8" opacity="0.1"/%3E%3Crect x="220" y="140" width="160" height="120" rx="10" fill="%23ffffff" opacity="0.08"/%3E%3C/svg%3E');
+            background-size: cover;
+            background-position: center;
+            padding: 3.5rem 2.5rem;
+            border-radius: 20px;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h2 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+        .hero h2 i {
+            color: #b5d6e8;
+            margin-right: 0.5rem;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: #e8f0f5;
+            max-width: 650px;
+            margin: 0.5rem auto 0;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+        }
+
+        .mission-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            align-items: center;
+        }
+
+        .mission-text h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #1e2b3c;
+            margin-bottom: 0.8rem;
+        }
+        .mission-text h2 i {
+            color: #2f6b8c;
+            margin-right: 0.5rem;
+        }
+        .mission-text p {
+            font-size: 1.05rem;
+            color: #3f556a;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #2f6b8c;
+            color: #ffffff;
+            padding: 0.8rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn:hover {
+            background: #1e4f6e;
+            transform: translateY(-2px);
+        }
+
+        /* ===== NEW: CIRCULAR IMAGE GALLERY ===== */
+        .image-gallery {
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .image-gallery h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1e2b3c;
+            margin-bottom: 0.5rem;
+        }
+        .image-gallery h2 i {
+            color: #2f6b8c;
+            margin-right: 0.5rem;
+        }
+        .image-gallery > p {
+            color: #4a5e73;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .circle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        .circle-item {
+            text-align: center;
+            max-width: 220px;
+        }
+
+        .circle-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin: 0 auto 1rem auto;
+            border: 5px solid #2f6b8c;
+            box-shadow: 0 8px 25px rgba(47, 107, 140, 0.25);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .circle-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(47, 107, 140, 0.35);
+        }
+
+        .circle-item h4 {
+            font-size: 1.1rem;
+            color: #1e2b3c;
+            margin-bottom: 0.2rem;
+        }
+        .circle-item p {
+            font-size: 0.9rem;
+            color: #4a5e73;
+        }
+
+        /* ===== ADVOCACY CARDS ===== */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.2rem 0;
+            color: #1e2b3c;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .section-title i {
+            color: #2f6b8c;
+            font-size: 1.8rem;
+        }
+
+        .advocacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .advocacy-card {
+            background: white;
+            padding: 2rem 1.8rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0, 20, 30, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-top: 5px solid #2f6b8c;
+            text-align: center;
+        }
+        .advocacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 20, 30, 0.10);
+        }
+
+        .advocacy-card i {
+            font-size: 2.8rem;
+            color: #2f6b8c;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+        }
+
+        .advocacy-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #1e2b3c;
+        }
+
+        .advocacy-card p {
+            color: #3f556a;
+            font-size: 0.95rem;
+        }
+
+        /* ===== FEEDBACK SECTION ===== */
+        .feedback-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 6px 18px rgba(0, 20, 30, 0.06);
+        }
+
+        .feedback-section .section-title {
+            margin-top: 0;
+        }
+
+        .feedback-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        .feedback-info h3 {
+            font-size: 1.3rem;
+            color: #1e2b3c;
+            margin-bottom: 0.5rem;
+        }
+        .feedback-info p {
+            color: #4a5e73;
+            margin-bottom: 1.5rem;
+        }
+        .feedback-info .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: #3f556a;
+        }
+        .feedback-info .info-item i {
+            color: #2f6b8c;
+            width: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feedback-form {
+            background: #f8f9fc;
+            padding: 1.8rem;
+            border-radius: 16px;
+        }
+
+        .feedback-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #1e2b3c;
+            font-size: 0.95rem;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea,
+        .feedback-form select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 2px solid #dce6ed;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background: #ffffff;
+            margin-bottom: 1.2rem;
+        }
+
+        .feedback-form input:focus,
+        .feedback-form textarea:focus,
+        .feedback-form select:focus {
+            border-color: #2f6b8c;
+            outline: none;
+        }
+
+        .feedback-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .feedback-form .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+            text-align: center;
+        }
+        .success-message.show {
+            display: block;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, rgba(30, 43, 60, 0.85) 0%, rgba(47, 107, 140, 0.8) 100%),
+                        url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"%3E%3Crect fill="%232f6b8c" width="400" height="200"/%3E%3Ccircle cx="60" cy="60" r="40" fill="%23b5d6e8" opacity="0.15"/%3E%3Ccircle cx="340" cy="140" r="50" fill="%23b5d6e8" opacity="0.1"/%3E%3C/svg%3E');
+            background-size: cover;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.6rem;
+            font-weight: 300;
+            color: #ffffff;
+            max-width: 750px;
+            margin: 0 auto;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .quote-section blockquote i {
+            color: #b5d6e8;
+            font-size: 2rem;
+            margin: 0 0.5rem;
+        }
+        .quote-section .attribution {
+            color: #b5d6e8;
+            font-size: 1rem;
+            margin-top: 0.8rem;
+        }
+
+        .a11y-badge {
+            background: #1e2b3c;
+            color: #f0f6fb;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+        .a11y-badge i {
+            color: #b5d6e8;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #dce6ed;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            color: #4a5e73;
+            font-size: 0.9rem;
+        }
+
+        .footer-icons a {
+            color: #4a5e73;
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .footer-icons a:hover {
+            color: #2f6b8c;
+        }
+
+        @media (max-width: 768px) {
+            .top-bar .container {
+                flex-direction: column;
+                gap: 0.4rem;
+                text-align: center;
+            }
+            .top-bar .right {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .top-bar a {
+                margin: 0 0.6rem;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1.5rem;
+                min-height: 200px;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .mission-section {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .mission-image {
+                height: 200px;
+            }
+
+            .feedback-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .advocacy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .circle-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            .circle-image {
+                width: 140px;
+                height: 140px;
+            }
+
+            .quote-section blockquote {
+                font-size: 1.2rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 0.8rem;
+                text-align: center;
+            }
+            .footer-icons a {
+                margin: 0 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="left">
+                <i class="fas fa-universal-access"></i>
+                <span>Advocacy for inclusive technology</span>
+            </div>
+            <div class="right">
+                <a href="#feedback"><i class="fas fa-comment"></i> Feedback</a>
+                <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="#"><i class="fas fa-user-plus"></i> Sign up</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                <img src="https://i.imgur.com/grnEIWv.png" alt="TechAccess Hub Logo" style="height:60px; width:auto;" />
+                <div class="logo-text">
+                    <p><i class="fas fa-universal-access" style="color:#2f6b8c;"></i> advocacy &bull; inclusion &bull; assistive tech</p>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Resources</a>
+                <a href="#">Stories</a>
+                <a href="#feedback">Feedback</a>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <div class="hero">
+            <h2><i class="fas fa-hand-holding-heart"></i> Tech for everyone</h2>
+            <p>We advocate for a world where assistive technology is accessible, affordable, and available to everyone who needs it. Because technology should never be a barrier—it should be a bridge.</p>
+        </div>
+
+        <!-- ===== NEW: CIRCULAR IMAGE GALLERY ===== -->
+        <div class="image-gallery">
+            <h2><i class="fas fa-images"></i> Assistive Tech in Action</h2>
+            <p>Real people using technology to live, learn, and work independently.</p>
+
+            <div class="circle-grid">
+                <!-- 👇 REPLACE THE URL IN background-image WITH YOUR UNSPLASH LINKS -->
+                <div class="circle-item">
+                    <div class="circle-image" style="background-image: url('https://images.unsplash.com/photo-1774537373436-aa944babfe9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fCUyMmFzc2lzdGl2ZSUyMHRlY2hub2xvZ3klMkMlMjIlMjAlMjJkaXNhYmlsaXR5JTJDJTIyfGVufDB8fDB8fHww');"></div>
+                    <h4>Using Assistive Tech</h4>
+                    <p>Technology that empowers</p>
+                </div>
+
+                <div class="circle-item">
+                    <div class="circle-image" style="background-image: url('https://images.unsplash.com/photo-1666214276372-24e331683e78?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fCUyMmFzc2lzdGl2ZSUyMHRlY2hub2xvZ3klMkMlMjIlMjAlMjJkaXNhYmlsaXR5JTJDJTIyfGVufDB8fDB8fHww');"></div>
+                    <h4>Accessibility in Action</h4>
+                    <p>Inclusive design matters</p>
+                </div>
+
+                <div class="circle-item">
+                    <div class="circle-image" style="background-image: url('https://plus.unsplash.com/premium_photo-1672430376847-d88a9c852fca?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8JTIyYXNzaXN0aXZlJTIwdGVjaG5vbG9neSUyQyUyMiUyMCUyMmRpc2FiaWxpdHklMkMlMjJ8ZW58MHx8MHx8fDA%3D');"></div>
+                    <h4>Smart Technology</h4>
+                    <p>AI for independence</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MISSION -->
+        <div class="mission-section">
+            <div class="mission-text">
+                <h2><i class="fas fa-bullhorn"></i> What We Stand For</h2>
+                <p>TechAccess Hub is an advocacy group dedicated to raising awareness about assistive technology. We believe that everyone deserves equal access to tools that help them live, learn, and work independently.</p>
+                <a href="#feedback" class="btn">Share Your Thoughts <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="mission-image" style="border-radius: 20px; height: 260px; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: #2f6b8c; opacity: 0.8; background: linear-gradient(135deg, #d4e4ed 0%, #b5d6e8 100%);">
+                <i class="fas fa-accessible-icon"></i>
+            </div>
+        </div>
+
+        <!-- ADVOCACY CARDS -->
+        <div class="section-title">
+            <i class="fas fa-lightbulb"></i> Why Assistive Tech Matters
+        </div>
+        <div class="advocacy-grid">
+            <div class="advocacy-card">
+                <i class="fas fa-eye"></i>
+                <h3>Screen Readers</h3>
+                <p>Software that reads text aloud for people with visual impairments. It turns digital information into spoken words, making websites, documents, and apps accessible.</p>
+            </div>
+            <div class="advocacy-card">
+                <i class="fas fa-microphone"></i>
+                <h3>Voice Control</h3>
+                <p>Speech-to-text and voice command systems allow people with mobility challenges to navigate devices, write messages, and control their environment using only their voice.</p>
+            </div>
+            <div class="advocacy-card">
+                <i class="fas fa-wheelchair"></i>
+                <h3>Mobility Aids</h3>
+                <p>From smart wheelchairs to adaptive controllers, mobility technology helps people with physical disabilities move freely and interact with the world around them.</p>
+            </div>
+            <div class="advocacy-card">
+                <i class="fas fa-closed-captioning"></i>
+                <h3>Captioning & Transcription</h3>
+                <p>Real-time captioning and transcription tools make audio content accessible for people with hearing impairments, ensuring no one misses out on important information.</p>
+            </div>
+            <div class="advocacy-card">
+                <i class="fas fa-font"></i>
+                <h3>Dyslexia-Friendly Tools</h3>
+                <p>Special fonts, color overlays, and reading aids help people with dyslexia process text more easily, making reading less frustrating and more enjoyable.</p>
+            </div>
+            <div class="advocacy-card">
+                <i class="fas fa-robot"></i>
+                <h3>AI-Powered Assistants</h3>
+                <p>Smart assistants like Alexa, Siri, and Google Assistant help people with various disabilities perform daily tasks—from setting reminders to controlling smart home devices.</p>
+            </div>
+        </div>
+
+        <!-- WHY ADVOCACY MATTERS -->
+        <div class="section-title">
+            <i class="fas fa-heart"></i> Why We Advocate
+        </div>
+        <div class="advocacy-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+            <div class="advocacy-card" style="border-top-color: #b5d6e8;">
+                <i class="fas fa-exclamation-triangle" style="color:#e67e22;"></i>
+                <h3>Many People Are Left Behind</h3>
+                <p>Millions of people with disabilities lack access to basic assistive technology because of cost, lack of awareness, or limited availability.</p>
+            </div>
+            <div class="advocacy-card" style="border-top-color: #b5d6e8;">
+                <i class="fas fa-hand-holding-heart" style="color:#27ae60;"></i>
+                <h3>Technology Changes Lives</h3>
+                <p>With the right tools, people with disabilities can study, work, and participate fully in society. Assistive tech is not a luxury—it's a necessity.</p>
+            </div>
+            <div class="advocacy-card" style="border-top-color: #b5d6e8;">
+                <i class="fas fa-users" style="color:#8e44ad;"></i>
+                <h3>We All Benefit</h3>
+                <p>Inclusive design and assistive technology benefit everyone—not just people with disabilities. Accessible products are better products for all.</p>
+            </div>
+        </div>
+
+        <!-- FEEDBACK -->
+        <div id="feedback" class="feedback-section">
+            <div class="section-title">
+                <i class="fas fa-comment-dots"></i> Send Us Your Feedback
+            </div>
+            <div class="feedback-grid">
+                <div class="feedback-info">
+                    <h3>We'd Love to Hear From You!</h3>
+                    <p>Your suggestions help us improve and make assistive technology more accessible for everyone. Share your ideas, recommendations, or any issues you've encountered.</p>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span><strong>Email:</strong> group8ates@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span><strong>Response Time:</strong> We'll get back to you within 24-48 hours</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span><strong>Privacy:</strong> Your information is kept confidential</span>
+                    </div>
+                </div>
+
+                <div class="feedback-form">
+                    <form id="feedbackForm" action="https://formspree.io/f/your-form-id" method="POST">
+                        <div class="success-message" id="successMessage">
+                            <i class="fas fa-check-circle"></i> Thank you! Your feedback has been sent successfully.
+                        </div>
+
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a topic...</option>
+                            <option value="suggestion">Suggestion / Idea</option>
+                            <option value="issue">Issue / Problem</option>
+                            <option value="praise">Praise / Compliment</option>
+                            <option value="question">Question / Inquiry</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us your suggestions, recommendations, or feedback..." required></textarea>
+
+                        <button type="submit" class="btn">
+                            <i class="fas fa-paper-plane"></i> Send Feedback
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUOTE -->
+        <div class="quote-section">
+            <blockquote>
+                <i class="fas fa-quote-left"></i> Assistive technology isn't a luxury—it's a lifeline that opens doors to education, work, and independence. <i class="fas fa-quote-right"></i>
+            </blockquote>
+            <div class="attribution">— TechAccess Hub Community</div>
+        </div>
+
+        <!-- ACCESSIBILITY BADGE -->
+        <div class="a11y-badge">
+            <i class="fas fa-universal-access"></i>
+            <span>Designed with accessibility in mind · Keyboard navigable · Screen reader friendly</span>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <span>© 2026 TechAccess Hub · Draft for class</span>
+            <div class="footer-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:group8ates@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const emailBody = `
+        Name: ${name}
+        Email: ${email}
+        Subject: ${subject}
+        
+        Message:
+        ${message}
+        `;
+
+            const mailtoLink = `mailto:group8ates@gmail.com?subject=Feedback: ${subject}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = mailtoLink;
+
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+
+            document.getElementById('feedbackForm').reset();
+
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 5000);
+        });
+    </script>
+
+</body>
+</html>
